@@ -25,6 +25,8 @@ function typeWriter() {
     terminal.innerHTML += terminalText.charAt(i);
     i++;
     setTimeout(typeWriter, speed);
+  } else {
+    terminal.innerHTML += '<span class="cursor"></span>'; // Add blinking cursor at the end
   }
 }
 
