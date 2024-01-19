@@ -2,9 +2,11 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
     background-color: black;
     color: white;
     font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
 }
 
 #terminal {
@@ -14,6 +16,8 @@ body, html {
     font-weight: bold;
     position: relative;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    height: 100vh; /* Make terminal take full viewport height */
+    box-sizing: border-box; /* Include padding in the height */
 }
 
 /* Pixel effect */
@@ -24,21 +28,27 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: repeating-linear-gradient(transparent, transparent 1px, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0.05) 2px);
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 1px,
+        rgba(255, 255, 255, 0.05) 1px,
+        rgba(255, 255, 255, 0.05) 2px
+    );
     pointer-events: none;
+    z-index: 2;
 }
 
 /* Reflection effect */
 #terminal::before {
     content: '';
     position: absolute;
-    bottom: -80px;
-    left: 20px;
-    right: 20px;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    transform: scaleY(-1);
-    overflow: hidden;
+    bottom: 0; /* Align to the bottom of the terminal */
+    left: 0;
+    right: 0;
+    height: 50%; /* Reflect only half of the terminal */
+    transform: translateY(100%) scaleY(-1);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    z-index: 1;
 }
 
 /* Blinking cursor */
