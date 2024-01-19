@@ -9,6 +9,49 @@ body, html {
 
 #terminal {
     white-space: pre;
-    font-size: 1em;
+    font-size: 1.2em;
     padding: 20px;
+    font-weight: bold;
+    position: relative;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Pixel effect */
+#terminal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(transparent, transparent 1px, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0.05) 2px);
+    pointer-events: none;
+}
+
+/* Reflection effect */
+#terminal::before {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: 20px;
+    right: 20px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    transform: scaleY(-1);
+    overflow: hidden;
+}
+
+/* Blinking cursor */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: white;
+    margin-left: 5px;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        background-color: transparent;
+    }
 }
