@@ -1,5 +1,5 @@
 const terminalText = `[New Connection Established]
-User: [Your Name]
+User: Josh Blyskal
 Target: Constantin Weisser, Data Scientist
 Intent: Initiate Lunch Meeting
 
